@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="ControleDePedidos.Business/ControleDePedidos.Business.csproj" />
+  <Project Path="ControleDePedidos.Data/ControleDePedidos.Data.csproj" />
+  <Project Path="ControleDePedidos.Domain/ControleDePedidos.Domain.csproj" />
+  <Project Path="ControleDePedidos/ControleDePedidos.Api.csproj" />
+</Solution>
