@@ -56,7 +56,7 @@ public class PedidoService : IPedidoService
         var cliente = await _clienteRepository.ObterPorId(pedido.ClienteId);
         if (cliente == null)
         {
-            throw new NullException("O cliente informado para o pedido nao existe");
+            throw new NullException("O Id de cliente cadastrado não existe");
         }
 
         PedidoEntity pedidoEntity = new PedidoEntity(
@@ -87,7 +87,7 @@ public class PedidoService : IPedidoService
         var cliente = await _clienteRepository.ObterPorId(pedido.ClienteId);
         if (cliente == null)
         {
-            throw new NullException("O cliente informado para o pedido nao existe");
+            throw new NullException("O Id de cliente cadastrado não existe");
         }
 
         var pedidoEntity = await _pedidoRepository.ObterPorId(pedido.Id);
@@ -128,5 +128,4 @@ public class PedidoService : IPedidoService
         _pedidoRepository?.Dispose();
     }
 }
-      
-// Na minha API, o meu enpoint Delete de Pedido está retornando 204, porém ele nao deleta o pedido. Ja coloquei breakpoint na minha controller, service e repositorio. Ele segue todo o fluxo normal,porém ele ainda sim nao deleta, mas manda a mensagem que foi deletado. Aqui vai minha controller, service e repository
+    
