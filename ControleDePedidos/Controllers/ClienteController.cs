@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using ControleDePedidos.Business.BusinessException;
 using ControleDePedidos.Business.BusinessExceptions;
 using ControleDePedidos.Business.Models;
 using ControleDePedidos.Business.Services.Interfaces;
