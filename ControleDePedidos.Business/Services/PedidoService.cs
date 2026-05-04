@@ -129,4 +129,3 @@ public class PedidoService : IPedidoService
     }
 }
       
-// Na minha API, o meu enpoint Delete de Pedido está retornando 204, porém ele nao deleta o pedido. Ja coloquei breakpoint na minha controller, service e repositorio. Ele segue todo o fluxo normal,porém ele ainda sim nao deleta, mas manda a mensagem que foi deletado. Aqui vai minha controller, service e repository

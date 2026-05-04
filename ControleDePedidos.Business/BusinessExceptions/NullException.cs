@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ControleDePedidos.Business.BusinessException;
+namespace ControleDePedidos.Business.BusinessExceptions;
 
 public class NullException : Exception
 {
