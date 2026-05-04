@@ -1,5 +1,4 @@
-﻿using ControleDePedidos.Business.BusinessException;
-using ControleDePedidos.Business.BusinessExceptions;
+﻿using ControleDePedidos.Business.BusinessExceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Extensions.Hosting;
