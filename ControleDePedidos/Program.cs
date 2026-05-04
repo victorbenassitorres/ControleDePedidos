@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Builder;
+using ControleDePedidos.Api.Middleware;
 
 var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,8 @@ builder.Services.AddDbContext<MeuDbContext>(options =>
         app.UseSwagger();
         app.UseSwaggerUI();
     }
+
+    app.UseMiddleware<ExceptionMiddleware>();
 
     app.UseHttpsRedirection();
 
