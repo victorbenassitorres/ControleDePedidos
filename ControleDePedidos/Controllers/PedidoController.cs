@@ -25,33 +25,15 @@ public class PedidoController : ControllerBase
     [HttpGet("pedido/{clienteId}")]
     public async Task<IActionResult> ListarPedidos(Guid clienteId)
     {
-        try
-        {
-            var pedidos = await _pedidoService.ListarPedidos(clienteId);
-            return Ok(pedidos);
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        var pedidos = await _pedidoService.ListarPedidos(clienteId);
+        return Ok(pedidos);
     }
 
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> ObterPorId(Guid id)
     {
-        try
-        {
-            var pedidoId = await _pedidoService.ObterPorId(id);
-            return Ok(pedidoId);
-        }
-        catch (NullException ex)
-        {
-            return NotFound(ex.Message);
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        var pedidoId = await _pedidoService.ObterPorId(id);
+        return Ok(pedidoId);
     }
 
     [HttpPost]
@@ -62,15 +44,8 @@ public class PedidoController : ControllerBase
             return BadRequest("Os dados do pedido são obrigatórios");
         }
 
-        try
-        {
-            await _pedidoService.Adicionar(pedido.ToModel());
-            return Ok(pedido);
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        await _pedidoService.Adicionar(pedido.ToModel());
+        return Ok(pedido);
     }
 
     [HttpPut("{id:guid}")]
@@ -83,32 +58,14 @@ public class PedidoController : ControllerBase
         
         pedido.Id= id;
 
-        try
-        {
-            await _pedidoService.Atualizar(pedido.ToModel());
-            return StatusCode(StatusCodes.Status204NoContent, "Pedido atualizado com sucesso");
-        }
-        catch(ArgumentException ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        await _pedidoService.Atualizar(pedido.ToModel());
+        return StatusCode(StatusCodes.Status204NoContent, "Pedido atualizado com sucesso");
     }
 
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Remover(Guid id)
     {
-        try
-        {
-            await _pedidoService.Remover(id);
-            return StatusCode(StatusCodes.Status204NoContent, "Pedido removido com sucesso");
-        }
-        catch (NullException ex)
-        {
-            return NotFound(ex.Message);
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        await _pedidoService.Remover(id);
+        return StatusCode(StatusCodes.Status204NoContent, "Pedido removido com sucesso");
     }
 }   

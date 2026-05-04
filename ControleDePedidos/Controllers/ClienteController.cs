@@ -24,34 +24,15 @@ public class ClienteController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> ListarCliente()
     {
-        try 
-        {
-           var clientes = await _clienteService.ListarClientes();
-           return Ok(clientes);
-        }
-        
-        catch
-        {
-            return NotFound();
-        }
+        var clientes = await _clienteService.ListarClientes();
+        return Ok(clientes);
     }
 
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> ObterPorId(Guid id)
     {
-        try
-        {
-            var clientesId = await _clienteService.ObterPorId(id);
-            return Ok(clientesId);
-        }
-      catch (NullException ex)
-        {
-            return NotFound(ex.Message);
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        var clientesId = await _clienteService.ObterPorId(id);
+        return Ok(clientesId);
     }
     
     [HttpGet("email/{email}")]
@@ -62,19 +43,8 @@ public class ClienteController : ControllerBase
             return BadRequest("O e-mail é obrigatório");
         }
 
-        try
-        {
-            var buscaPorEmail = await _clienteService.BuscarPorEmail(email);
-            return Ok(buscaPorEmail);
-        }
-         catch (NullException ex)
-        {
-            return NotFound(ex.Message);
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        var buscaPorEmail = await _clienteService.BuscarPorEmail(email);
+        return Ok(buscaPorEmail);
     }
     
 
@@ -86,19 +56,9 @@ public class ClienteController : ControllerBase
             return BadRequest("Os dados do cliente sao obrigatorios.");
         }
 
-        try
-        {
-            await _clienteService.Adicionar(cliente.ToModel());
-            return StatusCode(StatusCodes.Status201Created, "Cliente cadastrado com sucesso.");
-        }
-        catch (ClienteExisteException ex)
-        {
-            return Conflict(ex.Message);
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        await _clienteService.Adicionar(cliente.ToModel());
+        return StatusCode(StatusCodes.Status201Created, "Cliente cadastrado com sucesso.");
+
     }
 
     [HttpPut("{id:guid}")]
@@ -111,36 +71,14 @@ public class ClienteController : ControllerBase
 
         cliente.Id = id;
 
-        try
-        {
-            await _clienteService.Atualizar(cliente.ToModel());
-            return StatusCode(StatusCodes.Status204NoContent, "Cliente atualizado com sucesso"); 
-        }
-        catch (NullException ex)
-        {
-            return NotFound(ex.Message);
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        await _clienteService.Atualizar(cliente.ToModel());
+        return StatusCode(StatusCodes.Status204NoContent, "Cliente atualizado com sucesso"); 
     }
 
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Remover(Guid id)
-    {
-        try
-        {
-            await _clienteService.Remover(id);
-            return StatusCode(StatusCodes.Status204NoContent, "Cliente removido com sucesso");
-        }
-        catch (NullException ex)
-        {
-            return NotFound(ex.Message);
-        }
-        catch (ClientePossuiPedidosException ex)
-        {
-            return Conflict(ex.Message);
-        }
+    {   
+        await _clienteService.Remover(id);
+        return StatusCode(StatusCodes.Status204NoContent, "Cliente removido com sucesso");
     }
 }
