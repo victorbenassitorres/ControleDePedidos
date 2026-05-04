@@ -1,4 +1,3 @@
-﻿using ControleDePedidos.Business.BusinessException;
 using ControleDePedidos.Data.Repositories.Interfaces;
 using ControleDePedidos.Business.Services.Interfaces;
 using ControleDePedidos.Domain.Entities;
