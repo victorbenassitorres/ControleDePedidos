@@ -1,5 +1,4 @@
 ﻿using ControleDePedidos.Business.Models;
-using ControleDePedidos.Business.BusinessException;
 using ControleDePedidos.Business.Services.Interfaces;
 using ControleDePedidos.Data.Repositories.Interfaces;
 using ControleDePedidos.Domain.Entities;
