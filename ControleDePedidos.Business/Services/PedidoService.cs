@@ -56,7 +56,7 @@ public class PedidoService : IPedidoService
         var cliente = await _clienteRepository.ObterPorId(pedido.ClienteId);
         if (cliente == null)
         {
-            throw new NullException("O cliente informado para o pedido nao existe");
+            throw new NullException("O Id de cliente cadastrado não existe");
         }
 
         PedidoEntity pedidoEntity = new PedidoEntity(
@@ -87,7 +87,7 @@ public class PedidoService : IPedidoService
         var cliente = await _clienteRepository.ObterPorId(pedido.ClienteId);
         if (cliente == null)
         {
-            throw new NullException("O cliente informado para o pedido nao existe");
+            throw new NullException("O Id de cliente cadastrado não existe");
         }
 
         var pedidoEntity = await _pedidoRepository.ObterPorId(pedido.Id);
